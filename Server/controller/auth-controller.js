@@ -58,12 +58,24 @@ const login = async (req,res) =>{
               res.status(200).json({
                  token: this.featchUser.generateToken(),
                  expiresIn:3600,
-                  id:this.featchUser._id,
-                 image:this.featchUser.image
+                 id:this.featchUser._id,
+                 image:this.featchUser.image,
+                 isAdmin:this.featchUser.isAdmin
               })
           })
     }catch(error){
         res.status(500).json({message:"Internal Server Error"});
     }
 }
-module.exports = {register,home,login}
+
+const user = (req,res) =>{
+    try{
+           const userData = req.user;
+           console.log(userData);
+           res.status(200).json({userData});
+    }catch(error){
+         //console.log(error);
+         res.status(500).json({message:"Internal Server Error"});
+    }
+}
+module.exports = {register,home,login,user}

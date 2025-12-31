@@ -20,7 +20,7 @@ const userSchema =new mongoose.Schema({
     },
     isAdmin:{
         type:Boolean,
-        default:true
+        default:false
     }
 })
 //generate token
@@ -34,7 +34,7 @@ userSchema.methods.generateToken = function(){
             isAdmin:this.isAdmin
           },process.env.JWS_SECRET_KEY)
     }catch(err){
-        console.log(err);
+       // console.log(err);
     }
 }
 userSchema.methods.comparePassword = function(password){

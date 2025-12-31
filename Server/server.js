@@ -6,7 +6,7 @@ const cors = require('cors');
 const authRoute = require('./router/auth-router');
 const productRoute = require('./router/product-route');
 require('dotenv').config();
-const port = process.env.PORT;
+const port = 8000;
 
 const app = express();
 
@@ -33,7 +33,7 @@ app.use('/api/auth',authRoute)
 app.use('/api/products',productRoute)
 
 connectdb().then(()=>{
-   app.listen(port,()=>{
-       console.log(`Server is start : ${port}`)
+   app.listen(8000,()=>{
+       console.log(`Server is start`)
    })
 })
